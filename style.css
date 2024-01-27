@@ -71,3 +71,35 @@ h1{
 .recipe-item a:hover{
     background: #1e3799;
 }
+
+@media screen and (max-width: 768px){
+    .container{
+        max-width: 90%;
+    }
+
+    .recipe-item{
+        flex-direction: column;
+    }
+
+    .recipe-item img{
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .recipe-item h2{
+        font-size: 20px;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .recipe-item p{
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .recipe-item a{
+        width: 100%;
+        text-align: center;
+    }
+}
