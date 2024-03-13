@@ -1,4 +1,4 @@
-const API_KEY = "0e49a102a9754cb59dab73d313021894";
+const API_KEY = "a5d51c85admshb5dbb56d31ef4a6p1fa730jsn3f49a4d870d0";
 const recipeListEl = document.getElementById("recipe-list");
 
 function displayRecipes(recipes) {
@@ -10,7 +10,7 @@ function displayRecipes(recipes) {
         recipeImageEl.src = recipe.image;
         recipeImageEl.alt = "recipe image";
 
-        recipeTitleEl = document.getElementById("h2");
+        recipeTitleEl = document.createElement("h2");
         recipeTitleEl.innerText = recipe.title;
 
         recipeIngredientsEl = document.createElement("p");
@@ -28,18 +28,23 @@ function displayRecipes(recipes) {
         recipeItemEl.appendChild(recipeTitleEl);
         recipeItemEl.appendChild(recipeIngredientsEl);
         recipeItemEl.appendChild(recipeLinkEl);
-        recipeItemEl.appendChild(recipeItemEl);
+        recipeListEl.appendChild(recipeItemEl);
     });
 }
 
 async function getRecipes(){
-    const response = await fetch(
-        `https://api.spoonacular.com/recipes/random?number=10&apiKey=${API_KEY}`
-    );
-
-    const data = await response.json();
-
-    return data.recipes;
+    try {
+        const response = await fetch(
+            `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?tags=vegetarian%2Cdessert&number=10&apiKey=${API_KEY}`
+        );
+    
+        const data = await response.json();
+    
+        return data.recipes;
+        
+    } catch (error) {
+        throw error;
+    }
 }
 
 async function init(){
